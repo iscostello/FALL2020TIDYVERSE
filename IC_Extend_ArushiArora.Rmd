@@ -1,7 +1,7 @@
 ---
-title: "TidyVerse CREATE"
-author: "Arushi Arora"
-date: "10/23/2020"
+title: "TidyVerse EXTEND"
+author: "Ian Costello"
+date: "11/8/2020"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
@@ -48,7 +48,7 @@ steakdata1 = dplyr::rename(steakdata,
 "gamble" = "Do you ever gamble?",
 "skydiving" = "Have you ever been skydiving?",
 "overspeeding" = "Do you ever drive above the speed limit?",
-"cheat_patner" = "Have you ever cheated on your significant other?",
+"cheat_partner" = "Have you ever cheated on your significant other?",
 "eat_steak" = "Do you eat steak?",
 "steak_prep" = "How do you like your steak prepared?",
 "hh_income" = "Household Income",
@@ -76,7 +76,7 @@ steakdata4 <- steakdata3 %>%
   mutate(gamble = as.factor(gamble)) %>%
   mutate(skydiving = as.factor(skydiving)) %>%
   mutate(overspeeding = as.factor(overspeeding)) %>%
-  mutate(cheat_patner = as.factor(cheat_patner)) %>%
+  mutate(cheat_partner = as.factor(cheat_partner)) %>%
   mutate(eat_steak = as.factor(eat_steak)) %>%
   mutate(steak_prep = as.factor(steak_prep)) %>%
   mutate(Gender = as.factor(Gender)) %>%
@@ -88,6 +88,16 @@ steakdata4 <- steakdata3 %>%
   head(steakdata4)
 ```
 
+# IC Extended
 
+## Filter results
 
+```{r}
+library(dplyr)
 
+steakdata4 <- steakdata4 %>% 
+  filter(lottery == "Lottery A" & eat_steak == "Yes") %>%
+  select(RespondentID, lottery, eat_steak, steak_prep)
+
+head(steakdata4)
+```
